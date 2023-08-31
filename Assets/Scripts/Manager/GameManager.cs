@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,12 +13,20 @@ public class GameManager : MonoBehaviour
     private Vector3 mousePos;
     bool ballServed = false;
 
+    [SerializeField]
+    bool autoPlay;
+
 
     // Start is called before the first frame update
     void Start()
     {
         ball = FindObjectOfType<Ball>();
 
+    }
+
+    public bool AutoPlay()
+    {
+        return autoPlay;
     }
 
     public bool IsBallServed()
@@ -47,6 +56,8 @@ public class GameManager : MonoBehaviour
     {
         ballServed = true;
 
+        ball.transform.SetParent(null);
+
         mousePos.x = Input.mousePosition.x;
         mousePos.y = Input.mousePosition.y;
 
@@ -60,5 +71,14 @@ public class GameManager : MonoBehaviour
         Vector2 force = new Vector2(direction.x * ballSpeed, direction.y * ballSpeed);
 
         ball.AddForce(force);
+    }
+
+    public void OnLose()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void OnWin()
+    {
+        SceneManager.LoadScene(0);
     }
 }

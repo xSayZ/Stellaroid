@@ -1,0 +1,16 @@
+{
+  "bricks": [	
+    {"position": { "x": -13.925, "y": 4.5 }, "colorIdentifier": "Gray", "hitlimits": 1 },
+    {"position": { "x": -12.650, "y": 4.5 }, "colorIdentifier": "Gray", "hitlimits": 1 },
+    {"position": { "x": -11.375, "y": 4.5 }, "colorIdentifier": "Gray", "hitlimits": 1 },
+    {"position": { "x": -10.100, "y": 4.5 }, "colorIdentifier": "Gray", "hitlimits": 1 },
+    {"position": { "x": -8.825, "y": 4.5 }, "colorIdentifier": "Gray", "hitlimits": 1 },
+    {"position": { "x": -7.55, "y": 4.5 }, "colorIdentifier": "Gray", "hitlimits": 1 },
+    {"position": { "x": -13.925, "y": 4 }, "colorIdentifier": "Blue", "hitlimits": 1 },
+    {"position": { "x": -12.650, "y": 4 }, "colorIdentifier": "Blue", "hitlimits": 1 },
+    {"position": { "x": -11.375, "y": 4 }, "colorIdentifier": "Blue", "hitlimits": 1 },
+    {"position": { "x": -10.100, "y": 4 }, "colorIdentifier": "Blue", "hitlimits": 1 },
+    {"position": { "x": -8.825, "y": 4 }, "colorIdentifier": "Blue", "hitlimits": 1 },
+    {"position": { "x": -7.55, "y": 4 }, "colorIdentifier": "Blue", "hitlimits": 1 }
+  ]
+}
