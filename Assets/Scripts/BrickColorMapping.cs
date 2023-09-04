@@ -24,4 +24,9 @@ public class BrickColorMapping : ScriptableObject
         Debug.LogWarning("No prefab found for color identifier: " + colorIdentifier);
         return null;
     }
+
+    public string GetColorIdentifier(int index)
+    {
+        return colorPrefabs[index].colorIdentifier;
+    }
 }

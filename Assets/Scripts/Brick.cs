@@ -8,9 +8,12 @@ public class Brick : MonoBehaviour
     private BrickManager brickManager;    // Keep track of number of brickable bricks remain, move to
 
     [SerializeField]
-    public int hitLimit;
+    public int hitLimit = 1;
 
     private int hitTimes;
+
+    [SerializeField]
+    private int brickWorth = 100;
 
 
     // Start is called before the first frame update
@@ -18,7 +21,6 @@ public class Brick : MonoBehaviour
     {
         hitTimes = 0;
         brickManager = GameObject.FindObjectOfType<BrickManager>();
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,8 +40,13 @@ public class Brick : MonoBehaviour
         hitTimes++;
         if (hitTimes >= hitLimit)
         {
-            brickManager.OnDestroyBrick();
+            brickManager.OnDestroyBrick(brickWorth);
             Destroy(gameObject);
         }
+    }
+
+    public int GetHitLimits()
+    {
+        return hitLimit;
     }
 }

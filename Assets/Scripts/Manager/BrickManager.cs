@@ -11,9 +11,11 @@ public class BrickManager : MonoBehaviour
     private GameManager gameManager;
     private LevelLoader levelLoader;
     
-    public void OnDestroyBrick()
+    public void OnDestroyBrick(int amount)
     {
         numOfBreakableBricks--;
+
+        IncreaseScore(amount);
 
         if (numOfBreakableBricks <= 0)
         {
@@ -38,9 +40,8 @@ public class BrickManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void IncreaseScore(int amount)
     {
-
+        gameManager.IncreaseScore(amount);
     }
 }

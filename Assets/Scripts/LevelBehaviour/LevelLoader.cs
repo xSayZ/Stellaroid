@@ -3,28 +3,38 @@ using UnityEngine;
 public class LevelLoader : MonoBehaviour
 {
     [Header("Level Builder")]
-    [Tooltip("Click to toggle if you want to load the level from a JSON file or from placed bricks")]
+    [Tooltip("Click to toggle if you want to load the level from a JSON file or from placed bricks.")]
     [SerializeField]
-    private bool JSONSelector = true;
+    private bool JSONSelector = true; // Use JSON file by default
 
-    public TextAsset jsonFile;
-    public BrickColorMapping colorMapping;
-    bool levelLoaded = false;
+    [Tooltip("The JSON file containing level data.")]
+    [SerializeField]
+    private TextAsset[] jsonFile;
 
+    [Tooltip("The color mapping for bricks.")]
+    [SerializeField]
+    private BrickColorMapping colorMapping;
+
+    private bool levelLoaded = false; // Indicates whether the level has been loaded
+
+    // Indicates whether the level has been loaded
     public bool LevelLoad()
     {
         return levelLoaded;
     }
 
+    // Start is called before the first frame update
     void Start()
     {
+        // Check if JSONSelector is true (loading from JSON file)
         if (JSONSelector)
         {
-            LoadLevel(jsonFile);
-
+            // Load the level from the specified JSON file
+            LoadLevel(jsonFile[0]);
         }
     }
 
+    // Method to load a level from a JSON asset
     void LoadLevel(TextAsset jsonAsset)
     {
         if (jsonAsset != null)
