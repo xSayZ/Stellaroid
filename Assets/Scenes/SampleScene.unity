@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JSONSelector: 1
-  jsonFile: {fileID: 4900000, guid: 886c0bf86f94b144c8a4aae342f7a0f1, type: 3}
+  jsonFile: {fileID: 4900000, guid: 599b568278cf43b4bb0ed4f0401bf2e4, type: 3}
   colorMapping: {fileID: 11400000, guid: 6f82709f0e3dcf54f9687c4222929958, type: 2}
 --- !u!1 &227207403
 GameObject:
