@@ -2,12 +2,27 @@ using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
 {
+    [Header("Level Builder")]
+    [Tooltip("Click to toggle if you want to load the level from a JSON file or from placed bricks")]
+    [SerializeField]
+    private bool JSONSelector = true;
+
     public TextAsset jsonFile;
     public BrickColorMapping colorMapping;
+    bool levelLoaded = false;
+
+    public bool LevelLoad()
+    {
+        return levelLoaded;
+    }
 
     void Start()
     {
-        LoadLevel(jsonFile);
+        if (JSONSelector)
+        {
+            LoadLevel(jsonFile);
+
+        }
     }
 
     void LoadLevel(TextAsset jsonAsset)
@@ -28,6 +43,8 @@ public class LevelLoader : MonoBehaviour
                     Brick brickComponent = brickInstance.GetComponent<Brick>();
 
                     brickComponent.hitLimit = brickData.hitlimits;
+
+                    levelLoaded = true;
                 }
             }
         }
@@ -36,7 +53,10 @@ public class LevelLoader : MonoBehaviour
             Debug.LogError("JSON asset not assigned.");
         }
     }
+
 }
+
+
 
 [System.Serializable]
 public class LevelData
@@ -51,5 +71,3 @@ public class BrickData
     public string colorIdentifier;
     public int hitlimits;
 }
-
-

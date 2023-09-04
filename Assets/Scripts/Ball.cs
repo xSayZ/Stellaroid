@@ -6,10 +6,7 @@ public class Ball : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    private Paddle paddle;
     private Vector3 ballToPaddle;
-    private bool gameStarted;
-
     public Vector3 Position
     {
         get
@@ -21,11 +18,7 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        paddle = GameObject.FindObjectOfType<Paddle>();
-        rb = GetComponent<Rigidbody2D>();
-        gameStarted = false;
-        
+        rb = GetComponent<Rigidbody2D>();        
     }
 
     public void AddForce(Vector2 force)

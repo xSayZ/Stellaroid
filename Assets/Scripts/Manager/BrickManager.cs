@@ -9,10 +9,16 @@ public class BrickManager : MonoBehaviour
     private int numOfBreakableBricks;
 
     private GameManager gameManager;
+    private LevelLoader levelLoader;
     
     public void OnDestroyBrick()
     {
         numOfBreakableBricks--;
+
+        if (numOfBreakableBricks <= 0)
+        {
+            gameManager.OnWin();
+        }
     }
     public int RemainingBricks()
     {
@@ -22,18 +28,19 @@ public class BrickManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
-        // Find all GameObjects with the "BreakableBrick" tag and count them
-        GameObject[] breakableBricks = GameObject.FindGameObjectsWithTag("Breakable");
-        numOfBreakableBricks = breakableBricks.Length;
+        levelLoader = FindObjectOfType<LevelLoader>();
+        if (levelLoader.LevelLoad())
+        {
+            gameManager = GameObject.FindObjectOfType<GameManager>();
+            // Find all GameObjects with the "BreakableBrick" tag and count them
+            GameObject[] breakableBricks = GameObject.FindGameObjectsWithTag("Breakable");
+            numOfBreakableBricks = breakableBricks.Length;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (numOfBreakableBricks <= 0)
-        {
-            gameManager.OnWin();
-        }
+
     }
 }

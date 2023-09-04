@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
 
     Ball ball;
+    LevelLoader levelLoader;
+
     [SerializeField]
     float ballSpeed;
 
@@ -17,11 +19,12 @@ public class GameManager : MonoBehaviour
     bool autoPlay;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
         ball = FindObjectOfType<Ball>();
-
+        levelLoader = FindObjectOfType<LevelLoader>();
     }
 
     public bool AutoPlay()
@@ -75,10 +78,13 @@ public class GameManager : MonoBehaviour
 
     public void OnLose()
     {
+        Debug.Log("Loading scene 0 due to loss.");
         SceneManager.LoadScene(0);
     }
+
     public void OnWin()
     {
+        Debug.Log("Loading scene 0 due to win.");
         SceneManager.LoadScene(0);
     }
 }

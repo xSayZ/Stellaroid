@@ -15,5 +15,13 @@ MonoBehaviour:
   colorPrefabs:
   - colorIdentifier: Blue
     prefab: {fileID: 5161513702669200521, guid: dffc905c8a01e15439d3a723412cd19e, type: 3}
+  - colorIdentifier: Green
+    prefab: {fileID: 1249725126629642044, guid: d160587510c61d744bcd9309377ac5dd, type: 3}
+  - colorIdentifier: Red
+    prefab: {fileID: 2522689932184610217, guid: 05dafe548b74fae489f47d05044eb48d, type: 3}
+  - colorIdentifier: Yellow
+    prefab: {fileID: 4587699517372019848, guid: ac07eea5b2b11dd49820a695eadc2529, type: 3}
+  - colorIdentifier: Purple
+    prefab: {fileID: 597217938495698462, guid: a5da3991a5aca724cadc1c15729d675e, type: 3}
   - colorIdentifier: Gray
     prefab: {fileID: 5172576607349981146, guid: 33622126eeda1d94994d0474de455508, type: 3}

@@ -27,7 +27,7 @@ public class Paddle : MonoBehaviour
         {
             AutomatedPlay();
 
-        } else if (gameManager.IsBallServed() && !gameManager.AutoPlay())
+        } else
         {
             MouseMovement();
         }
@@ -48,5 +48,8 @@ public class Paddle : MonoBehaviour
         Vector3 paddlePos = gameObject.transform.position;
         paddlePos.x = Mathf.Clamp(ballPos, -13.5f, 3.5f);
         gameObject.transform.position = paddlePos;
+        Debug.Log(ballPos);
+        Debug.Log(paddlePos);
+
     }
 }
