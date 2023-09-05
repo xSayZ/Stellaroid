@@ -52,7 +52,7 @@ public class LevelLoader : MonoBehaviour
                     GameObject brickInstance = Instantiate(brickPrefab, position, Quaternion.identity);
                     Brick brickComponent = brickInstance.GetComponent<Brick>();
 
-                    brickComponent.hitLimit = brickData.hitlimits;
+                    brickComponent.HitLimit = brickData.hitlimits;
 
                     levelLoaded = true;
                 }

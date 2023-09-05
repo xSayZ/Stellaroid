@@ -37,12 +37,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LevelLoader levelLoader;
 
-    // Ball speed setting
-    [Header("Ball Settings")]
-    [Tooltip("The speed at which the ball moves.")]
-    [SerializeField]
-    private float ballSpeed;
-
     // Player's score
     [Header("Scoring")]
     [Tooltip("The current score.")]
@@ -98,14 +92,7 @@ public class GameManager : MonoBehaviour
     {
         if (!ballServed)
         {
-            // Get the mouse position
-            mousePos.x = Input.mousePosition.x;
-            mousePos.y = Input.mousePosition.y;
-
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                ServeBall();
-            }
+            HandleBallServe();
         }
         else
         {
@@ -114,23 +101,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ServeBall()
+    private void HandleBallServe()
     {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            ServeBall();
+        }
+    }
+
+    private void ServeBall()
+    {
+        Vector3 targetPosition = GetMouseWorldPosition();
+        ball.Serve(targetPosition);
         ballServed = true;
+        HideCursor();
+    }
 
-        // Release the ball from its parent
-        ball.transform.SetParent(null);
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        return Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y));
+    }
 
-        // Hide the cursor during gameplay
+    private void HideCursor()
+    {
         Cursor.visible = false;
-
-        // Calculate the direction and force to apply to the ball
-        Vector3 ballPos = Camera.main.WorldToScreenPoint(ball.Position);
-        Vector3 direction = (mousePos - ballPos).normalized;
-        Vector2 force = new Vector2(direction.x * ballSpeed, direction.y * ballSpeed);
-
-        // Apply the calculated force to the ball
-        ball.AddForce(force);
     }
 
     // Handle the event when the player loses the game

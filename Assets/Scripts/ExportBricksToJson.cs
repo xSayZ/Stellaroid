@@ -32,7 +32,7 @@ public class ExportBricksToJson : MonoBehaviour
                 BrickData brickData = new BrickData();
                 brickData.position = new Vector2(brick.transform.position.x, brick.transform.position.y);
                 brickData.colorIdentifier = brickColorMapping.GetColorIdentifier(i);
-                brickData.hitlimits = brick.GetHitLimits();
+                brickData.hitlimits = brick.HitLimit;
 
                 brickDataArray[i] = brickData;
             }

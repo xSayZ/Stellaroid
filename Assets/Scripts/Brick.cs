@@ -8,30 +8,42 @@ public class Brick : MonoBehaviour
     private BrickManager brickManager;    // Keep track of number of brickable bricks remain, move to
 
     [SerializeField]
-    public int hitLimit = 1;
+    private int hitLimit = 1;
+    public int HitLimit
+    {
+        get { return hitLimit; }
+        set { hitLimit = value; }
+    }
 
     private int hitTimes;
 
     [SerializeField]
-    private int brickWorth = 100;
+    private int _brickWorth = 100;
+    public int BrickWorth
+    {
+        get { return _brickWorth; }
+        set { _brickWorth = value; }
+    }
 
+    void Awake()
+    {
+        brickManager = GameObject.FindObjectOfType<BrickManager>();
+        if(brickManager == null){
+            Debug.LogError("BrickManager not found!");
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         hitTimes = 0;
-        brickManager = GameObject.FindObjectOfType<BrickManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.tag == "Breakable")
+        if (CompareTag("Breakable"))
         {
             HandleBreakableBricks();
-        }
-        else
-        {
-
         }
     }
 
@@ -40,13 +52,8 @@ public class Brick : MonoBehaviour
         hitTimes++;
         if (hitTimes >= hitLimit)
         {
-            brickManager.OnDestroyBrick(brickWorth);
+            brickManager.OnDestroyBrick(BrickWorth);
             Destroy(gameObject);
         }
-    }
-
-    public int GetHitLimits()
-    {
-        return hitLimit;
     }
 }

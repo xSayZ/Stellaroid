@@ -34,7 +34,6 @@ public class Paddle : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         ball = FindObjectOfType<Ball>();
-
     }
 
     // Update is called once per frame

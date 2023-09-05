@@ -4,37 +4,49 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    // Ball speed setting
+    [Header("Ball Settings")]
+    [Tooltip("The speed at which the ball moves.")]
+    [SerializeField]
+    private float _speed;
 
-    private Rigidbody2D rb;
-    private Vector3 ballToPaddle;
-    public Vector3 Position
+    private Rigidbody2D _rb;
+
+    void Awake()
     {
-        get
+        _rb = GetComponent<Rigidbody2D>();     
+
+                if (_rb == null)
         {
-            return transform.position;
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();        
+            throw new MissingComponentException("Rigidbody2D component not found on the Ball object.");
+        }   
     }
 
     public void AddForce(Vector2 force)
     {
-        rb.AddForce(force, ForceMode2D.Impulse);
+        _rb.AddForce(force, ForceMode2D.Impulse);
     }
 
     public void CheckVelocity()
     {
-        if(rb.velocity.x == 0)
+        if(_rb.velocity.x == 0)
         {
-            rb.velocity = new Vector2(Random.Range(1, 3), rb.velocity.y);
+            _rb.velocity = new Vector2(Random.Range(1, 3), _rb.velocity.y);
         }
-        else if(rb.velocity.y == 0)
+        else if(_rb.velocity.y == 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, Random.Range(1, 3));
+           _rb.velocity = new Vector2(_rb.velocity.x, Random.Range(1, 3));
         }
+    }
+
+    public void Serve(Vector3 targetPosition)
+    {
+        transform.SetParent(null);
+
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        Vector2 force = new Vector2(direction.x * _speed, direction.y * _speed);
+
+        // Apply the calculated force to the ball
+        AddForce(force);
     }
 }
