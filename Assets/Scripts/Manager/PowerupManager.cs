@@ -38,6 +38,7 @@ public class PowerupManager : MonoBehaviour
 
                 if (selectedPickupPrefab != null)
                 {
+                    Debug.Log(spawnPosition);
                     Instantiate(selectedPickupPrefab, spawnPosition, Quaternion.identity);
                 }
             }

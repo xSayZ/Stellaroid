@@ -61,7 +61,7 @@ public class Brick : MonoBehaviour
         if (hitTimes >= hitLimit)
         {
             brickManager.OnDestroyBrick(BrickWorth);
-            powerupManager.DropRandomPickup(this.transform.position);
+            powerupManager.DropRandomPickup(transform.position);
             Destroy(gameObject);
         }
     }

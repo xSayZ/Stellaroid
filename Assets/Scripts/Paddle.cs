@@ -16,6 +16,11 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     private GameManager gameManager;
 
+    // Array of weapon object
+    [Tooltip("Add weapons here to be able to launch particle (shots) from")]
+    [SerializeField]
+    private GameObject[] weapons;
+
     // Current ball position
     [Header("Position")]
     [Tooltip("The current position of the ball.")]

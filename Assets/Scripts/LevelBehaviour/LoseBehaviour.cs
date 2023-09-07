@@ -16,7 +16,14 @@ public class LoseBehaviour : MonoBehaviour
         // If while waiting for transition to next level, don't check lose condition
         if (brickManager.RemainingBricks() > 0)
         {
-            gameManager.OnLose();
+            if (collision.tag == "Powerup")
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                gameManager.OnLose();
+            }
         }
     }
 }
