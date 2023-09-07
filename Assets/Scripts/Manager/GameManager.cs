@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
     [Header("Game Components")]
     [SerializeField]
     private Ball ball;         
-    [SerializeField]
-    private LevelLoader levelLoader;
 
     // Player's score
     [Header("Scoring")]
@@ -43,8 +41,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int score = 0;
 
-    // Internal variables
-    private Vector3 mousePos;
     private bool ballServed = false;
 
     private void Awake()
@@ -60,7 +56,6 @@ public class GameManager : MonoBehaviour
     {
         // Find and assign references to Ball and LevelLoader components
         ball = FindObjectOfType<Ball>();
-        levelLoader = FindObjectOfType<LevelLoader>();
 
         // Load the previous score if it exists
         if (PlayerPrefs.HasKey("Score"))

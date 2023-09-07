@@ -49,7 +49,6 @@ public class GameManagerEditor : Editor
         try
         {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("ball"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("levelLoader"));
         }
         catch (System.Exception e)
         {
@@ -62,7 +61,6 @@ public class GameManagerEditor : Editor
     {
         try
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("ballSpeed"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("score"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("autoPlay"));
         }

@@ -5,15 +5,41 @@ using UnityEngine;
 public class BrickManager : MonoBehaviour
 {
 
+    // Singleton Instance - Do not modify
+    private static BrickManager _instance;
+
+    // Singleton property to access the GameManager instance
+    public static BrickManager Instance
+    {
+        get
+        {
+            if (_instance is null)
+            {
+                // Try to find an existing GameManager in the scene
+                _instance = FindObjectOfType<BrickManager>();
+
+                if (_instance is null)
+                {
+                    // Log an error if GameManager is not found
+                    Debug.LogError("GameManager is not found in the scene.");
+                }
+            }
+
+            return _instance;
+        }
+    }
+
     [SerializeField]
     private int numOfBreakableBricks;
+    [SerializeField]
+    private int numOfBricksBroken;
 
     private GameManager gameManager;
-    private LevelLoader levelLoader;
     
     public void OnDestroyBrick(int amount)
     {
         numOfBreakableBricks--;
+        numOfBricksBroken++;
 
         IncreaseScore(amount);
 
@@ -27,17 +53,22 @@ public class BrickManager : MonoBehaviour
         return numOfBreakableBricks;
     }
 
+    public int BricksDestroyed()
+    {
+        return numOfBricksBroken;
+    }
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>(); 
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        levelLoader = FindObjectOfType<LevelLoader>();
-        if (levelLoader.LevelLoad())
-        {
-            gameManager = GameObject.FindObjectOfType<GameManager>();
-            // Find all GameObjects with the "BreakableBrick" tag and count them
-            GameObject[] breakableBricks = GameObject.FindGameObjectsWithTag("Breakable");
-            numOfBreakableBricks = breakableBricks.Length;
-        }
+         // Find all GameObjects with the "BreakableBrick" tag and count them
+         GameObject[] breakableBricks = GameObject.FindGameObjectsWithTag("Breakable");
+         numOfBreakableBricks = breakableBricks.Length;
     }
 
     public void IncreaseScore(int amount)

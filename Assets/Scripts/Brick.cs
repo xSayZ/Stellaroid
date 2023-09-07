@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour
 {
 
     private BrickManager brickManager;    // Keep track of number of brickable bricks remain, move to
+    private PowerupManager powerupManager;
 
     [SerializeField]
     private int hitLimit = 1;
@@ -27,10 +28,17 @@ public class Brick : MonoBehaviour
 
     void Awake()
     {
-        brickManager = GameObject.FindObjectOfType<BrickManager>();
+        brickManager = FindObjectOfType<BrickManager>();
         if(brickManager == null){
             Debug.LogError("BrickManager not found!");
         }
+
+        powerupManager = FindObjectOfType<PowerupManager>();
+        if(powerupManager == null)
+        {
+            Debug.LogError("PowerManager not found!");
+        }
+
     }
 
     // Start is called before the first frame update
@@ -53,6 +61,7 @@ public class Brick : MonoBehaviour
         if (hitTimes >= hitLimit)
         {
             brickManager.OnDestroyBrick(BrickWorth);
+            powerupManager.DropRandomPickup(this.transform.position);
             Destroy(gameObject);
         }
     }
