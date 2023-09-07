@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PowerupManager : MonoBehaviour
 {
-    public PickupData[] pickups;
+    [SerializeField]
+    [Range(0, 1)]
+    public float baseDropChance = 0.2f;
+    [SerializeField]
+    [Range(0.001f,0.2f)]
+    public float chanceIncreasePerDestroy = 0.01f;
 
-    private float baseDropChance = 0.2f;
-    private float chanceIncreasePerDestroy;
+    public float currentDropChance;
+    public int bricksDestroyed;
+
+    public PickupData[] pickups;
 
     public void DropRandomPickup(Vector2 spawnPosition)
     {
+        bricksDestroyed++;
         if (pickups.Length > 0)
         {
-            float currentDropChance = baseDropChance;
-
-            int bricksDestroyed = BrickManager.Instance.BricksDestroyed();
+            // Increase currentDropChance based on bricksDestroyed if needed.
             currentDropChance += bricksDestroyed * chanceIncreasePerDestroy;
 
+            // Ensure the drop chance doesn't exceed 1.0 (100% chance).
             currentDropChance = Mathf.Clamp01(currentDropChance);
 
             if(Random.value <= currentDropChance)
@@ -26,12 +34,20 @@ public class PowerupManager : MonoBehaviour
                 int randomIndex = Random.Range(0, pickups.Length);
                 GameObject selectedPickupPrefab = pickups[randomIndex].powerupPrefab;
 
-                if(selectedPickupPrefab != null)
+                ResetOdds();
+
+                if (selectedPickupPrefab != null)
                 {
                     Instantiate(selectedPickupPrefab, spawnPosition, Quaternion.identity);
                 }
             }
         }
+    }
+
+    public void ResetOdds()
+    {
+        currentDropChance = baseDropChance;
+        bricksDestroyed = 0;
     }
 
 }

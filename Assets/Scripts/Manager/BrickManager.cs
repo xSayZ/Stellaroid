@@ -31,15 +31,11 @@ public class BrickManager : MonoBehaviour
 
     [SerializeField]
     private int numOfBreakableBricks;
-    [SerializeField]
-    private int numOfBricksBroken;
-
     private GameManager gameManager;
     
     public void OnDestroyBrick(int amount)
     {
         numOfBreakableBricks--;
-        numOfBricksBroken++;
 
         IncreaseScore(amount);
 
@@ -53,10 +49,6 @@ public class BrickManager : MonoBehaviour
         return numOfBreakableBricks;
     }
 
-    public int BricksDestroyed()
-    {
-        return numOfBricksBroken;
-    }
 
     private void Awake()
     {

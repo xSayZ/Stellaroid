@@ -676,7 +676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfBreakableBricks: 0
-  numOfBricksBroken: 0
 --- !u!4 &138438358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8949799211629965152, guid: 05dafe548b74fae489f47d05044eb48d, type: 3}
@@ -1962,7 +1961,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e64c15b6c7bbf4583ff34c821b4887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseDropChance: 0.1
+  chanceIncreasePerDestroy: 0.0299
+  currentDropChance: 0.1
+  bricksDestroyed: 0
   pickups:
+  - powerupName: 
+    powerupPrefab: {fileID: 0}
   - powerupName: 
     powerupPrefab: {fileID: 0}
   - powerupName: 
