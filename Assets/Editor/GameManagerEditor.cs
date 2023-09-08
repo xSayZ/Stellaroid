@@ -48,7 +48,9 @@ public class GameManagerEditor : Editor
     {
         try
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("ball"));
+            SerializedProperty pickups = serializedObject.FindProperty("balls");
+            EditorGUILayout.PropertyField(pickups, true);
+
         }
         catch (System.Exception e)
         {

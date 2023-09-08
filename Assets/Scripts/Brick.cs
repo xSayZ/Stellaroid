@@ -26,6 +26,8 @@ public class Brick : MonoBehaviour
         set { _brickWorth = value; }
     }
 
+    private bool destroying = false;
+
     void Awake()
     {
         brickManager = FindObjectOfType<BrickManager>();
@@ -51,7 +53,12 @@ public class Brick : MonoBehaviour
     {
         if (CompareTag("Breakable"))
         {
-            HandleBreakableBricks();
+            if(destroying != true)
+            {
+                destroying = true;
+                Debug.Log(destroying);
+                HandleBreakableBricks();
+            }
         }
     }
 
@@ -59,8 +66,12 @@ public class Brick : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
-            HandleBreakableBricks();
-            Destroy(collision.gameObject);
+            if (destroying != true)
+            {
+                destroying = true;
+                HandleBreakableBricks();
+                Destroy(collision.gameObject);
+            }
         }
     }
 

@@ -30,11 +30,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // References to other game components
-    [Header("Game Components")]
-    [SerializeField]
-    private Ball ball;         
-
+    public List<Ball> balls;
+    
     // Player's score
     [Header("Scoring")]
     [Tooltip("The current score.")]
@@ -54,8 +51,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Find and assign references to Ball and LevelLoader components
-        ball = FindObjectOfType<Ball>();
+        balls = new List<Ball>();
+        balls.Add(FindObjectOfType<Ball>());
 
         // Load the previous score if it exists
         if (PlayerPrefs.HasKey("Score"))
@@ -91,9 +88,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Check the ball's velocity
-            ball.CheckVelocity();
+            foreach (Ball ball in balls)
+            {
+                // Check the ball's velocity
+                ball.CheckVelocity();
+            }
         }
+
+        EventManager.OnBallSpawned.AddListener(AddBallToList);
     }
 
     private void HandleBallServe()
@@ -107,7 +109,10 @@ public class GameManager : MonoBehaviour
     private void ServeBall()
     {
         Vector3 targetPosition = GetMouseWorldPosition();
-        ball.Serve(targetPosition);
+        foreach (Ball ball in balls)
+        {
+            ball.Serve(targetPosition);
+        }
         ballServed = true;
         HideCursor();
     }
@@ -126,8 +131,15 @@ public class GameManager : MonoBehaviour
     // Handle the event when the player loses the game
     public void OnLose()
     {
-        Debug.Log("Loading scene 0 due to loss.");
-        SceneManager.LoadScene(0);
+        if (balls.Count != 1)
+        {
+            return;
+        }
+        else
+        {
+            Debug.Log("Loading scene 0 due to loss.");
+            SceneManager.LoadScene(0);
+        }
     }
 
     // Handle the event when the player wins the game
@@ -145,5 +157,17 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
 
         EventManager.OnScoreChanged.Invoke(score);
+    }
+
+    public void AddBallToList(Ball ball)
+    {
+        if(balls.Count > 10)
+        {
+            return;
+        }
+        else
+        {
+            balls.Add(ball);
+        }
     }
 }

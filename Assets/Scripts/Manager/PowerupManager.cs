@@ -38,7 +38,12 @@ public class PowerupManager : MonoBehaviour
 
                 if (selectedPickupPrefab != null)
                 {
-                    Instantiate(selectedPickupPrefab, spawnPosition, Quaternion.identity);
+                    GameObject instantiatedPowerup = Instantiate(selectedPickupPrefab, spawnPosition, Quaternion.identity);
+                    Powerup powerupScript = instantiatedPowerup.GetComponent<Powerup>();
+                    if (powerupScript != null)
+                    {
+                        powerupScript.Initialize(pickups[randomIndex].powerupName);
+                    }
                 }
             }
         }

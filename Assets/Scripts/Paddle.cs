@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,25 +76,45 @@ public class Paddle : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.TryGetComponent(out Powerup powerup))
+        var powerup = other.gameObject.GetComponent<Powerup>();
+        if (powerup != null)
         {
             Debug.Log("Powerup picked up");
             powerup.Destroy();
-            OnPowerupPickup(other);
+            OnPowerupPickup(powerup, other);
         }
     }
 
-    public void OnPowerupPickup(Collider2D other)
+    public void OnPowerupPickup(Powerup powerup, Collider2D other)
     {
-        if (other.gameObject.TryGetComponent(out LaserPowerup laserPowerup))
+        string powerupName = powerup.GetPowerupName();
+
+        Debug.Log("Paddle picked up power-up: " + powerupName);
+
+        if (powerupName.Equals("Laser Powerup"))
         {
-            Debug.Log("Shooting should occur");
-            foreach (GameObject weapon in weapons)
-            {
-                weapon.GetComponent<LaserWeapon>().Shoot();
-            }
+            LaserPowerup();
         }
-       
+        if (powerupName.Equals("Multiball Powerup"))
+        {
+            MultiBallPowerup(other);
+        }
     }
 
+    private void LaserPowerup()
+    {
+        Debug.Log("Shooting should occur");
+        foreach (GameObject weapon in weapons)
+        {
+            weapon.GetComponent<LaserWeapon>().Shoot();
+        }
+
+    }
+
+    private void MultiBallPowerup(Collider2D other)
+    {
+        var paddleY = transform.position.y + 1;
+        var spawnPos = new Vector3(transform.position.x, paddleY, 0);
+        other.gameObject.GetComponent<MultiballPowerup>().spawnBalls(spawnPos);
+    }
 }

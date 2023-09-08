@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 668654943204396551}
   - component: {fileID: 668654943204396550}
   - component: {fileID: 668654943204396548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7efc44cec8f2247af346233355a0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
+  _speed: 15
 --- !u!58 &668654943204396550
 CircleCollider2D:
   m_ObjectHideFlags: 0

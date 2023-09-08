@@ -57,7 +57,24 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c1df1bea2a49fea4baf37e55a4218e76, type: 3}
     - target: {fileID: 1169524191014984301, guid: 6ab4758ebd5e02145a8dca09c10cf880, type: 3}
       propertyPath: m_Name
-      value: Paddle Powerup
+      value: Paddle Powerup Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ab4758ebd5e02145a8dca09c10cf880, type: 3}
+--- !u!1 &8677905252466188358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1169524191014984301, guid: 6ab4758ebd5e02145a8dca09c10cf880, type: 3}
+  m_PrefabInstance: {fileID: 7517880893454875179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2180871340848166956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677905252466188358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be4532d690ec0d4ca1d72c7b093fe25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
     [Header("Ball Settings")]
     [Tooltip("The speed at which the ball moves.")]
     [SerializeField]
-    private float _speed;
+    private float _speed = 20;
 
     private Rigidbody2D _rb;
 
@@ -20,6 +20,11 @@ public class Ball : MonoBehaviour
         {
             throw new MissingComponentException("Rigidbody2D component not found on the Ball object.");
         }   
+    }
+
+    private void Start()
+    {
+        EventManager.OnBallSpawned.Invoke(this);
     }
 
     public void AddForce(Vector2 force)
@@ -45,6 +50,8 @@ public class Ball : MonoBehaviour
 
         Vector3 direction = (targetPosition - transform.position).normalized;
         Vector2 force = new Vector2(direction.x * _speed, direction.y * _speed);
+
+        Debug.Log(force);
 
         // Apply the calculated force to the ball
         AddForce(force);

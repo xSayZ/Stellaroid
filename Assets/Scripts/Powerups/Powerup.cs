@@ -15,10 +15,22 @@ public class Powerup : MonoBehaviour
     [ReadOnly]
     private float currentSpeed;
 
+
     // Start is called before the first frame update
     void Start()
     {
         currentSpeed = decendSpeed;
+    }
+
+    private string powerupName;
+
+    public void Initialize(string name)
+    {
+        powerupName = name;
+    }
+    public string GetPowerupName()
+    {
+        return powerupName;
     }
 
     // Update is called once per frame

@@ -11,13 +11,14 @@ public class LoseBehaviour : MonoBehaviour
         gameManager = GameObject.FindObjectOfType<GameManager>();
         brickManager = GameObject.FindObjectOfType<BrickManager>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         // If while waiting for transition to next level, don't check lose condition
         if (brickManager.RemainingBricks() > 0)
         {
             if (collision.tag == "Powerup")
             {
+                gameManager.balls.Remove(collision.gameObject.GetComponent<Ball>());
                 Destroy(collision.gameObject);
             }
             else
