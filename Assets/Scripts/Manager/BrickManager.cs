@@ -44,11 +44,11 @@ public class BrickManager : MonoBehaviour
             gameManager.OnWin();
         }
     }
+
     public int RemainingBricks()
     {
         return numOfBreakableBricks;
     }
-
 
     private void Awake()
     {

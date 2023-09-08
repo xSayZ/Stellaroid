@@ -16,7 +16,7 @@ public class Ball : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();     
 
-                if (_rb == null)
+        if (_rb == null)
         {
             throw new MissingComponentException("Rigidbody2D component not found on the Ball object.");
         }   

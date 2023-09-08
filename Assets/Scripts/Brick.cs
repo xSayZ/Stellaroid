@@ -55,6 +55,15 @@ public class Brick : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            HandleBreakableBricks();
+            Destroy(collision.gameObject);
+        }
+    }
+
     private void HandleBreakableBricks()
     {
         hitTimes++;

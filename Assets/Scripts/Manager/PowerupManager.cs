@@ -15,7 +15,7 @@ public class PowerupManager : MonoBehaviour
     public float currentDropChance;
     public int bricksDestroyed;
 
-    public PickupData[] pickups;
+    public PowerupData[] pickups;
 
     public void DropRandomPickup(Vector2 spawnPosition)
     {
@@ -38,7 +38,6 @@ public class PowerupManager : MonoBehaviour
 
                 if (selectedPickupPrefab != null)
                 {
-                    Debug.Log(spawnPosition);
                     Instantiate(selectedPickupPrefab, spawnPosition, Quaternion.identity);
                 }
             }
@@ -54,7 +53,7 @@ public class PowerupManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class PickupData
+public class PowerupData
 {
     public string powerupName;
     public GameObject powerupPrefab;

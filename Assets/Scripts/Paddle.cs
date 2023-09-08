@@ -21,6 +21,9 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     private GameObject[] weapons;
 
+    [SerializeField]
+    private float fireRate = 1f;
+
     // Current ball position
     [Header("Position")]
     [Tooltip("The current position of the ball.")]
@@ -30,16 +33,14 @@ public class Paddle : MonoBehaviour
 
     // Current mouse X position
     [Tooltip("The current X position of the mouse.")]
-    [SerializeField]
-    [ReadOnly]
     private float mouseXPos;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
         ball = FindObjectOfType<Ball>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -71,4 +72,28 @@ public class Paddle : MonoBehaviour
         gameObject.transform.position = paddlePos;
 
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.TryGetComponent(out Powerup powerup))
+        {
+            Debug.Log("Powerup picked up");
+            powerup.Destroy();
+            OnPowerupPickup(other);
+        }
+    }
+
+    public void OnPowerupPickup(Collider2D other)
+    {
+        if (other.gameObject.TryGetComponent(out LaserPowerup laserPowerup))
+        {
+            Debug.Log("Shooting should occur");
+            foreach (GameObject weapon in weapons)
+            {
+                weapon.GetComponent<LaserWeapon>().Shoot();
+            }
+        }
+       
+    }
+
 }
