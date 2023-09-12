@@ -78,4 +78,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb07e45d5e5950045a4c521fe3081d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  fireRatePerSeconds: 2
+  amountToShoot: 10

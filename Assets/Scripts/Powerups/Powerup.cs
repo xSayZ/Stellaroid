@@ -12,7 +12,6 @@ public class Powerup : MonoBehaviour
     private float accelerationSpeed = -0.25f;
 
     [SerializeField]
-    [ReadOnly]
     private float currentSpeed;
 
 
@@ -42,10 +41,5 @@ public class Powerup : MonoBehaviour
             currentSpeed = 0;
 
         transform.position += Vector3.down * decendSpeed * Time.deltaTime;
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
     }
 }

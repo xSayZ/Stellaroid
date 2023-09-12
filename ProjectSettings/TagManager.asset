@@ -8,6 +8,7 @@ TagManager:
   - Unbreakable
   - Powerup
   - Projectile
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Ball
-  - 
+  - Projectile
   - 
   - 
   - 

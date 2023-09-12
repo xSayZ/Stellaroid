@@ -6,8 +6,9 @@ public class GameManagerEditor : Editor
 {
     private enum DisplayCategory
     {
-        Components,
         Settings,
+        SoundSettings,
+        Components,
     }
 
     private DisplayCategory categoryToDisplay;
@@ -24,11 +25,14 @@ public class GameManagerEditor : Editor
 
             switch (categoryToDisplay)
             {
-                case DisplayCategory.Components:
-                    DisplayComponents();
-                    break;
                 case DisplayCategory.Settings:
                     DisplaySettings();
+                    break;
+                case DisplayCategory.SoundSettings:
+                    DisplaySoundSettings();
+                    break;
+                case DisplayCategory.Components:
+                    DisplayComponents();
                     break;
                 default:
                     break;
@@ -42,6 +46,19 @@ public class GameManagerEditor : Editor
             Debug.LogError("An error occurred in the custom inspector: " + e.ToString());
         }
 
+    }
+
+    void DisplaySoundSettings()
+    {
+        try
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("soundConfigurations"));
+        }
+        catch (System.Exception e)
+        {
+            // Handle any exceptions that might occur when displaying settings
+            Debug.LogError("An error occurred while displaying settings: " + e.ToString());
+        }
     }
 
     void DisplayComponents()

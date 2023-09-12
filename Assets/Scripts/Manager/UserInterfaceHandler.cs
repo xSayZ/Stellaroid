@@ -6,6 +6,7 @@ using System;
 
 public class UserInterfaceHandler : MonoBehaviour
 {
+
     [SerializeField]
     private TMP_Text scoreText;
 

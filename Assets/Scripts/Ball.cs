@@ -22,6 +22,11 @@ public class Ball : MonoBehaviour
         }   
     }
 
+    public Rigidbody2D ReturnBallRigidbody()
+    {
+        return _rb;
+    }
+
     private void Start()
     {
         EventManager.OnBallSpawned.Invoke(this);
@@ -50,8 +55,6 @@ public class Ball : MonoBehaviour
 
         Vector3 direction = (targetPosition - transform.position).normalized;
         Vector2 force = new Vector2(direction.x * _speed, direction.y * _speed);
-
-        Debug.Log(force);
 
         // Apply the calculated force to the ball
         AddForce(force);

@@ -79,4 +79,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 668654943204396549, guid: 4bc74c3043ddc3744a0b61de3b72708d, type: 3}
-  amountToSpawn: 10
+  amountToSpawn: 2

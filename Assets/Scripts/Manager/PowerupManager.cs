@@ -15,12 +15,12 @@ public class PowerupManager : MonoBehaviour
     public float currentDropChance;
     public int bricksDestroyed;
 
-    public PowerupData[] pickups;
+    public PowerupData[] powerups;
 
-    public void DropRandomPickup(Vector2 spawnPosition)
+    public void DropRandomPowerup(Vector2 spawnPosition)
     {
         bricksDestroyed++;
-        if (pickups.Length > 0)
+        if (powerups.Length > 0)
         {
             // Increase currentDropChance based on bricksDestroyed if needed.
             currentDropChance += bricksDestroyed * chanceIncreasePerDestroy;
@@ -31,8 +31,8 @@ public class PowerupManager : MonoBehaviour
             if(Random.value <= currentDropChance)
             {
                 Debug.Log("Powerup Drop");
-                int randomIndex = Random.Range(0, pickups.Length);
-                GameObject selectedPickupPrefab = pickups[randomIndex].powerupPrefab;
+                int randomIndex = Random.Range(0, powerups.Length);
+                GameObject selectedPickupPrefab = powerups[randomIndex].powerupPrefab;
 
                 ResetOdds();
 
@@ -42,7 +42,7 @@ public class PowerupManager : MonoBehaviour
                     Powerup powerupScript = instantiatedPowerup.GetComponent<Powerup>();
                     if (powerupScript != null)
                     {
-                        powerupScript.Initialize(pickups[randomIndex].powerupName);
+                        powerupScript.Initialize(powerups[randomIndex].powerupName);
                     }
                 }
             }

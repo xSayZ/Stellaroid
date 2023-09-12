@@ -5,7 +5,10 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
 
-    private BrickManager brickManager;    // Keep track of number of brickable bricks remain, move to
+    [SerializeField]
+    private SoundData soundConfiguration;
+
+    private BrickManager brickManager;
     private PowerupManager powerupManager;
 
     [SerializeField]
@@ -51,12 +54,14 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Play sound
+        EventManager.OnPlaySound.Invoke(soundConfiguration);
+
         if (CompareTag("Breakable"))
         {
             if(destroying != true)
             {
                 destroying = true;
-                Debug.Log(destroying);
                 HandleBreakableBricks();
             }
         }
@@ -81,8 +86,10 @@ public class Brick : MonoBehaviour
         if (hitTimes >= hitLimit)
         {
             brickManager.OnDestroyBrick(BrickWorth);
-            powerupManager.DropRandomPickup(transform.position);
+            powerupManager.DropRandomPowerup(transform.position);
             Destroy(gameObject);
+        } else if (hitLimit == 0)
+        {
         }
     }
 }

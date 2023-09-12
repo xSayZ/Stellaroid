@@ -78,3 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be4532d690ec0d4ca1d72c7b093fe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paddleYSize: 2
+  paddleXSize: 4
+  powerupTime: 3

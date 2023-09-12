@@ -31,8 +31,8 @@ public class PowerupManagerEditor : Editor
         EditorGUILayout.Space(); // Add some final spacing.
 
         // Display the 'pickups' array.
-        SerializedProperty pickups = serializedObject.FindProperty("pickups");
-        EditorGUILayout.PropertyField(pickups, true);
+        SerializedProperty powerups = serializedObject.FindProperty("powerups");
+        EditorGUILayout.PropertyField(powerups, true);
 
         // Apply changes to the serialized object.
         serializedObject.ApplyModifiedProperties();

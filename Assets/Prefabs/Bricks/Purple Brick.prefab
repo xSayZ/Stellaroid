@@ -46,6 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e281f3d29745af44921612030ee9b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundConfiguration:
+    audioName: 
+    audioClip: {fileID: 8300000, guid: c3a9fad71d2f01e47927281cf8b98730, type: 3}
+    volume: 0.3
+    pitch: 1
+  brickManager: {fileID: 0}
+  powerupManager: {fileID: 0}
   hitLimit: 1
   _brickWorth: 100
 --- !u!212 &7637269609161762073
