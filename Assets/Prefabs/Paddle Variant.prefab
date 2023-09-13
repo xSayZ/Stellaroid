@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paddle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 160058604613720530, guid: f9d04f824828c7b4d9164d0e86fddfdb, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 160058604613720531, guid: f9d04f824828c7b4d9164d0e86fddfdb, type: 3}
       propertyPath: ball
       value: 
@@ -239,6 +243,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668654943204396552, guid: 4bc74c3043ddc3744a0b61de3b72708d, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 668654943204396552, guid: 4bc74c3043ddc3744a0b61de3b72708d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 668654943204396552, guid: 4bc74c3043ddc3744a0b61de3b72708d, type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 668654943204396552, guid: 4bc74c3043ddc3744a0b61de3b72708d, type: 3}

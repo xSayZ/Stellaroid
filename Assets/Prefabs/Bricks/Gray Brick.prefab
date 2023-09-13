@@ -53,6 +53,7 @@ MonoBehaviour:
     pitch: 1
   hitLimit: 0
   _brickWorth: 100
+  particle: {fileID: 0}
 --- !u!212 &7692996928640227487
 SpriteRenderer:
   m_ObjectHideFlags: 0

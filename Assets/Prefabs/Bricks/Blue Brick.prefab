@@ -51,10 +51,9 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: c3a9fad71d2f01e47927281cf8b98730, type: 3}
     volume: 0.3
     pitch: 1
-  brickManager: {fileID: 0}
-  powerupManager: {fileID: 0}
   hitLimit: 1
   _brickWorth: 100
+  particle: {fileID: 0}
 --- !u!212 &5161513702669200526
 SpriteRenderer:
   m_ObjectHideFlags: 0

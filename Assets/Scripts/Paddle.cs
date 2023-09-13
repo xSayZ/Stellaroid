@@ -6,6 +6,8 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
 
+    [Header("Audio")]
+    [Tooltip("List of Audio that can be played. Specify AudioName to play sound")]
     [SerializeField]
     private List<SoundData> soundConfigurations = new List<SoundData>();
 
@@ -17,8 +19,6 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     private Ball ball;
 
-    // Reference to the Ball object
-    [Header("References")]
     [Tooltip("Reference to the Camera object.")]
     [SerializeField]
     private CameraShake cameraShake;

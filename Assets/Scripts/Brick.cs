@@ -11,6 +11,8 @@ public class Brick : MonoBehaviour
     private BrickManager brickManager;
     private PowerupManager powerupManager;
 
+    [Space]
+
     [SerializeField]
     private int hitLimit = 1;
     public int HitLimit
@@ -33,6 +35,7 @@ public class Brick : MonoBehaviour
 
     void Awake()
     {
+
         brickManager = FindObjectOfType<BrickManager>();
         if(brickManager == null){
             Debug.LogError("BrickManager not found!");
@@ -56,7 +59,6 @@ public class Brick : MonoBehaviour
     {
         // Play sound
         EventManager.OnPlaySound.Invoke(soundConfiguration);
-
         if (CompareTag("Breakable"))
         {
             if(destroying != true)
@@ -88,8 +90,6 @@ public class Brick : MonoBehaviour
             brickManager.OnDestroyBrick(BrickWorth);
             powerupManager.DropRandomPowerup(transform.position);
             Destroy(gameObject);
-        } else if (hitLimit == 0)
-        {
         }
     }
 }
